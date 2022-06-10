@@ -48,7 +48,7 @@ def post_order():
     new_entry = MyApp(order_id=order_id, size=size, toppings=toppings, crust=crust)
     db.session.add(new_entry)
     db.session.commit()    
-    return {"message": "Order %d created." % order_id}, 200
+    return {"message": "Order %d created." % order_id}, 201
 
 @app.route('/order/<int:order_id>', methods=["PUT"])
 def update_order(order_id):
@@ -60,7 +60,7 @@ def update_order(order_id):
     entry.crust = req["crust"]
     db.session.add(entry)
     db.session.commit()    
-    return {"message": "Order %d updated." % order_id}, 200
+    return {"message": "Order %d updated." % order_id}, 204
 
 @app.route('/order/<int:order_id>', methods=["DELETE"])
 def delete_order(order_id):
