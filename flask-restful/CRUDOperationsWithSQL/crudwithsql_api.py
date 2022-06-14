@@ -1,14 +1,18 @@
 from flask import Flask, jsonify, make_response, request
 from flask_restful import Resource, Api, marshal_with, reqparse, abort, fields, marshal
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['BUNDLE_ERRORS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:password123@localhost/bookshop'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+CORS(app)
+
 api = Api(app)
 db = SQLAlchemy(app)
+
 
 class Book(db.Model):
 

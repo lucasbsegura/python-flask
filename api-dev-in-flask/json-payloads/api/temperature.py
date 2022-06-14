@@ -6,7 +6,7 @@ import sys
 class TemperatureView(Resource):
 
     def post(self):
-        data = request.get_json()
+        data = request.get_json() #dictionary
 
         try:
             temperature = float(data.get('temperature'))
